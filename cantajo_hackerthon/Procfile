@@ -1,0 +1,1 @@
+web: gunicorn gilcat.wsgi --log-file -

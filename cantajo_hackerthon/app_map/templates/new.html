@@ -1,0 +1,451 @@
+{% load staticfiles %}
+
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title> 길냥이 지도 </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+        
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+
+   
+        
+        
+        <link rel="stylesheet" href="{% static '/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static '/css/noscript.css' %}" /></noscript>
+		<link href="https://fonts.googleapis.com/css?family=Crete+Round|Lobster|Noto+Sans+KR|Noto+Sans:400i|Song+Myung&display=swap" rel="stylesheet">
+		
+		<style>
+
+			::-webkit-scrollbar{width: 10px;}
+			::-webkit-scrollbar-track {background-color: rgb(218, 218, 218);}
+			::-webkit-scrollbar-thumb {background-color:rgb(37, 37, 37); border-radius: 0px;}
+			::-webkit-scrollbar-thumb:hover {background: rgb(52, 52, 52);}
+
+			::-moz-selection {
+				background: rgb(37, 37, 37);
+				color: #fff;
+			}
+
+			::selection {
+				background: rgb(37, 37, 37);
+				color: #fff;
+			}
+
+			h1 {
+				font-family: 'Crete Round', serif;
+				text-shadow: 2px 2px 2px rgb(88, 88, 88);
+			}
+
+			h3.detail {
+				font-family: 'Noto Sans KR', sans-serif;
+				color: #fff;
+				text-shadow: 2px 2px 2px rgb(88, 88, 88);
+			}
+		
+			nav {
+				font-family: 'Noto Sans', sans-serif;
+				text-shadow: 2px 2px 2px rgb(88, 88, 88);
+			}
+
+			ul.univ {
+				font-family: 'Noto Sans KR', sans-serif;
+			}
+            
+            div, #grid{
+                font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+            }
+            
+            #grid{
+                display : grid;
+                grid-template-columns: 2.5fr 1.5fr;
+            }
+
+            .card{
+                display : grid;
+                grid-template-columns: 2fr 3fr;
+            }
+
+            #catlist{
+                height: 600px;
+                width: 400px;
+                margin : 100px 100px 50px 100px ;
+            }
+
+            #maphere{
+                margin : 100px;
+            }
+            
+            div, #maphere{ 
+                font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+            }
+            
+            br.how {
+                font-size: 30px;
+                font-family: 'Noto Sans KR', sans-serif;
+            }
+            
+            div.container_row{
+                padding-right: 35px;
+                padding-left: 35px;
+                margin-right: auto;
+                margin-left: auto;
+            } 
+            
+
+
+		</style>
+
+
+	</head>
+
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a  style="text-decoration:none" href="{% url 'map_skku' %}" id="logo">Sungkyunkwan Univ</a></h1>
+								<h3 class="detail"> <br> 성균관대학교 근처 길냥이 지도 </h3>
+							</header>
+						</div>
+
+					<!-- Nav -->
+					<nav id="nav">
+							<ul>
+								<li><a href="{% url 'home' %}">Home</a></li>
+								<li><a href="{% url 'about_1' %}">About</a></li>
+								<li><a href="{% url 'about_2' %}">Notice</a></li>
+								<li>
+									<a href="#">University</a>
+										<ul class="univ">
+											<li><a href="{% url 'map_skku' %}">성균관대학교</a></li>
+											<li><a href="#"  onclick="alert('준비중입니다!');" >서울의과대학교</a></li>
+										    <li><a href="#"  onclick="alert('준비중입니다!');" >성신여자대학교</a></li>
+										    <li><a href="#"  onclick="alert('준비중입니다!');" >숙명여자대학교</a></li>
+										</ul>
+								</li>
+							</ul>
+						</nav>
+
+				</div>
+
+
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=2pqdgrl3l4"></script>
+ 
+
+</head>
+
+
+<body>
+
+    <div style="border-bottom : solid 2px gray "> <br> </div>
+    
+    <div style="margin-left : 30px;">   </div>
+
+<div id="grid" >
+    
+        
+        <div id="map-here" style="border-right: solid 2px gray ">
+            <div class="container_row">
+            <br class="how"> &nbsp;&nbsp;&nbsp; <b>사용 방법</b> <br><br>
+            &nbsp;&nbsp;&nbsp;1) 고양이가 등장하는 지점을 마우스로 클릭 <br>
+            &nbsp;&nbsp;&nbsp;2) 잘못 누를 경우 Esc로 취소 <br>
+            &nbsp;&nbsp;&nbsp;3) 마커를 다 추가했으면 오른쪽의 양식을 마저 입력 후 제출하기 클릭! <br>
+            </div>
+            
+        <div id="map" style="width:80%;height:750px ;  margin-left : 10% ;  margin-top : 5% ;"></div>        
+            
+<script>
+
+            // 여기다 지도 
+            var map = new naver.maps.Map( document.getElementById('map'), 
+                {       
+
+            // 학교 쪽으로 설정
+                        zoom: 12,
+                        center: new naver.maps.LatLng( 37.5873000 ,126.9932600),
+            // 줌 컨트롤
+                        zoomControl: true,
+                        zoomControlOptions: {
+                        style: naver.maps.ZoomControlStyle.SMALL,
+                        position: naver.maps.Position.TOP_RIGHT
+                        }
+                }  );
+        
+
+            var markerList = [];
+            
+            // 정보창.
+            // var infoWindows = [];
+
+        
+            var menuLayer = $('<div style="position:absolute;z-index:10000;background-color:#fff;border:solid 1px #333;padding:10px;display:none;"></div>');
+        
+            map.getPanes().floatPane.appendChild(menuLayer[0]);
+        
+        
+            naver.maps.Event.addListener(map, 'click', function(e) {
+           
+                var marker = new naver.maps.Marker({
+                    position: e.coord,
+                    map: map
+
+                    // 여긴 마커 모양을 다른 걸로 하고싶은 경우
+                    // icon: {
+                    //     url: HOME_PATH +'/img/example/sally.png',
+                    //     size: new naver.maps.Size(50, 52),
+                    //     origin: new naver.maps.Point(0, 0),
+                    //     anchor: new naver.maps.Point(25, 26)
+                    // }
+                
+                });
+        
+                // 작동 ㄴㄴ
+                // var infoWindow = new naver.maps.InfoWindow({
+                //     content: '<div style="width:150px;text-align:center;padding:10px;">사진 넣을 수 있을까 </div>',
+                //     zIndex : 100   
+                // });
+                
+                console.log(marker.position);
+                markerList.push(marker);               
+                // infoWindows.push(infoWindow);
+                
+            });
+    
+            // 작동 ㄴㄴ
+            // function getClickHandler(seq) {
+            //     return function(e) {
+            //         var mark = markerList[seq],
+            //             infotab = infoWindows[seq];
+
+            //         if ( infotab.getMap()) {
+            //             infotab.close();
+            //         } else {
+            //             infotab.open(map, mark);
+            //         }
+            //     }
+            // }
+
+            // for (var i=0, ii=markerList.length; i<ii; i++) {
+            //     naver.maps.Event.addListener(markerList[i], 'rightclick', getClickHandler(i));
+            // }
+
+
+            naver.maps.Event.addListener(map, 'keydown', function(e) {
+                var keyboardEvent = e.keyboardEvent,
+                    keyCode = keyboardEvent.keyCode || keyboardEvent.which;
+        
+                var ESC = 27;
+        
+                
+                
+                // ESC 한 번에 하나씩만 없어지게 만듬
+                
+                if (keyCode === ESC) {
+                    keyboardEvent.preventDefault();
+        
+                    var i = (markerList.length) -1;
+                    // for (var i=0, ii=markerList.length; i<ii; i++) {
+                        // markerList[i].setMap(null);
+                    // }
+                    markerList[i].setMap(null);
+       
+                    markerList.pop();
+
+                    infoWindows.pop();
+                    // markerList = [];
+
+                    menuLayer.hide();
+                }
+
+
+            });
+        
+            naver.maps.Event.addListener(map, 'mousedown', function(e) {
+                menuLayer.hide();
+            });
+       
+            // 굳이 없어도
+            // naver.maps.Event.addListener(map, 'rightclick', function(e) {
+            //     var coordHtml =
+            //         'Coord: '+ '(우 클릭 지점 위/경도 좌표)' + '<br />' +
+            //         'Point: ' + e.point + '<br />' +
+            //         'Offset: ' + e.offset;
+        
+            //     menuLayer.show().css({
+            //         left: e.offset.x,
+            //         top: e.offset.y
+            //     }).html(coordHtml);
+        
+            //     console.log('Coord: ' + e.coord.toString());
+            // });      
+
+
+
+
+            // naver.maps.Event.addListener(markerList[k], "click", function(e) {
+            //     var j = markerList.indexOf(markerList[k]);
+                
+            //     var window = infoWindows[j];
+                
+            //     window.open(map, markerList[k] );
+
+            //     // if (window.getMap()) {
+            //     //     window.close();
+            //     // } else {
+            //     //     window.open(map, marker);
+            //     // }
+            
+            // });
+            
+</script>        
+</div>
+
+        <div style="padding-bottom : 5px; padding-top : 5px; ">
+            <div id="catlist" style="margin-top: 15px;">
+                
+                
+            <form enctype="multipart/form-data"  method="POST" >        
+            {% csrf_token %}
+                 <div class="form-group">
+                     <label for='exampleFormControlFile1'>고양이 사진 추가</label>
+                     <input name='catimage' type='file' class='form-control-file'>
+                </div>
+
+                <div class="form-group">
+                     <label for='exampleFormControlInput1'>고양이 이름</label>
+                     <input name='name' type='text' class='form-control' placeholder="이름을 입력해주세요">
+                </div>
+                <div class="form-group">
+                     <label for='exampleFormControlSelect1'>성별</label>
+                     <select name='gender' class='form-control'>
+                        <option value='' selected>-- 선택 --</option>
+                        <option>모름</option>
+                        <option>남</option>
+                        <option>여</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                     <label for='exampleFormControlSelect1'>나이</label>
+                     <select name='age' class='form-control'>
+                        <option value='' selected>-- 선택 --</option>
+                        <option>모름</option>
+                        <option>아기묘</option>
+                        <option>성묘</option>
+                        <option>노묘</option>
+                     </select>
+                </div>
+                <div>
+                    <label><input name='feature[]' type="checkbox" value='furious'>
+                    경계심이 많음</label>
+                </div>
+                <div>
+                    <label><input name='feature[]' type="checkbox" value='family'>
+                    가족이 있음</label>
+                </div>
+                <div>
+                    <label><input name='feature[]' type="checkbox" value='food'>
+                    주기적으로 급식을 먹고 있음</label>
+                </div>
+                <div>
+                    <label><input name='feature[]' type="checkbox" value='touch'>
+                    만지면 안됨</label>
+                </div>
+                <div>
+                    <label><input name='feature[]' type="checkbox" value='health'>
+                    정기적으로 병원에 다니고 있음</label>
+                </div>
+                 <div class="form-group">
+                    <label for="exampleFormControlTextarea1">상세정보</label>
+                    <textarea name='info'  rows="3" placeholder="상세한 정보를 입력해주세요" ></textarea>
+                 </div>
+                
+                <div class="form-group">
+                </div>                                              
+                            
+                
+                
+                
+                                        <br>
+
+                            <input id="pos_yid" name="pos_y" type="hidden" value="a">
+                            <input id="pos_xid" name="pos_x" type="hidden" value="a">
+
+
+                            <input type="submit" class="btn btn-primary " value="제출하기" onclick ="
+                                                                                               
+                            var y = [] ;     var x = [] ;
+                            
+                            for( var i = 0 ; i < markerList.length ; i++ ){
+                                y += ' '+String(markerList[i].position.y);
+                                x += ' '+String(markerList[i].position.x);
+                                }
+
+                            $('#pos_yid').val(y) ;
+                            $('#pos_xid').val(x) ;
+
+                            console.log( $('#pos_yid').val() );
+                            console.log( $('#pos_xid').val() );                                                                        
+                                                                                             ">
+
+                            <button type="button" class="btn btn-primary "><a style="color:white; " href="{% url 'map_skku' %}"  >홈으로</a></button>
+
+            </form>
+            <br>
+            
+        </div>
+            
+        </div>   
+    </div>
+
+</body>
+
+
+    
+    <script src="{% static '/js/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/jquery.dropotron.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/jquery.scrolly.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/jquery.scrollex.min.js' %} " type="text/javascript"></script>
+    <script src="{% static '/js/browser.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/breakpoints.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/util.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/main.js' %}" type="text/javascript"></script>    
+
+        
+<script>
+        
+        
+            function sendValue(){
+                // document.getElementsByName("point_value").value = "({0},{1})".format(markerList[0].map.center.y, markerList[0].map.center.x)
+         
+            
+                                
+            
+            }
+
+
+        
+        </script>
+        
+        

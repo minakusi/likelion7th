@@ -1,0 +1,73 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="write.css">
+    <link href="https://fonts.googleapis.com/css?family=Akronim" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
+    <title>home</title>
+    <style>
+        h1{
+            text-align:center;
+            font-family: 'Akronim', cursive;
+            font-size: 5em;
+            color:red;
+        }
+        #thanos{
+            width:30em;
+            display:block;
+            margin:auto;
+        }
+        button{
+            background-color:red;
+            border:0px;
+            display:block;
+            margin:auto;
+            width:10em;
+            height:4em;
+            border-radius:10%
+        }
+        #a{
+            color:white;
+            font-size:1.5em;
+            font-family: 'Sofia', cursive;
+            text-decoration:none;
+        }
+        input[type=submit] {border:none;
+        background-color:red;
+        color:white;
+        display:block;
+        margin:auto;
+        font-size:2em;
+        height:2em;
+        width:7em;
+        font-family: 'Sofia', cursive;
+        border-radius:10%
+        }
+        body{
+            background-color: black;
+        }
+        textarea{
+            display:block;
+            margin:auto;
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size:1.5em;
+        }
+    </style>
+</head>
+<body> 
+   
+    <img src='{% static "thanos.jpg"%}' id='thanos' alt='타노스'>
+    <h1>I'm inevitable...</h1>
+
+    <button><a href="{%url 'about'%}" id='a'>ABOUT</a></button>
+    <br>
+    <form action='{%url "result"%}'>
+        <textarea style='border:none' cols="50" rows="10" name='fulltext'></textarea>
+        <br>
+        <input type="submit" value="finger snap">
+    </form>
+</body>
+</html>

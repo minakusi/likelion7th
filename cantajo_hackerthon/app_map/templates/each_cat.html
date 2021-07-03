@@ -1,0 +1,352 @@
+{% load staticfiles %}
+
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title> 길냥이 지도 </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+        
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+        
+        
+        <link rel="stylesheet" href="{% static '/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static '/css/noscript.css' %}" /></noscript>
+		<link href="https://fonts.googleapis.com/css?family=Crete+Round|Lobster|Noto+Sans+KR|Noto+Sans:400i|Song+Myung&display=swap" rel="stylesheet">
+		
+		<style>
+
+			::-webkit-scrollbar{width: 10px;}
+			::-webkit-scrollbar-track {background-color: rgb(218, 218, 218);}
+			::-webkit-scrollbar-thumb {background-color:rgb(37, 37, 37); border-radius: 0px;}
+			::-webkit-scrollbar-thumb:hover {background: rgb(52, 52, 52);}
+
+			::-moz-selection {
+				background: rgb(37, 37, 37);
+				color: #fff;
+			}
+
+			::selection {
+				background: rgb(37, 37, 37);
+				color: #fff;
+			}
+
+			h1 {
+				font-family: 'Crete Round', serif;
+				text-shadow: 2px 2px 2px rgb(88, 88, 88);
+			}
+
+			h3.detail {
+				font-family: 'Noto Sans KR', sans-serif;
+				color: #fff;
+				text-shadow: 2px 2px 2px rgb(88, 88, 88);
+			}
+		
+			nav {
+				font-family: 'Noto Sans', sans-serif;
+				text-shadow: 2px 2px 2px rgb(88, 88, 88);
+			}
+
+			ul.univ {
+				font-family: 'Noto Sans KR', sans-serif;
+			}
+
+            .feature{
+                height:30px;
+                border:1.5px solid black;
+                border-radius:15px;
+            }
+            
+            #grid{
+                display : grid;
+                grid-template-columns: 2.5fr 1.5fr;
+            }
+    
+            .card{
+                display : grid;
+                grid-template-columns: 2fr 3fr;
+            }
+    
+            #catlist{
+                height: 600px;
+                width: 400px;
+                margin : 100px 100px 50px 100px;
+                padding-bottom : 0ox;
+            }
+    
+            #maphere{
+                margin : 100px;
+            }
+    
+            body {
+                font-family:  'Noto Sans KR', 'Noto Sans', sans-serif;
+            }
+		</style>
+
+
+	</head>
+
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a style="text-decoration:none" href="{% url 'map_skku' %}" id="logo">Sungkyunkwan Univ</a></h1>
+								<h3 class="detail"> <br> 성균관대학교 근처 길냥이 지도 </h3>
+							</header>
+						</div>
+
+					<!-- Nav -->
+					<nav id="nav">
+							<ul>
+								<li><a href="{% url 'home' %}">Home</a></li>
+								<li><a href="{% url 'about_1' %}">About</a></li>
+								<li><a href="{% url 'about_2' %}">Notice</a></li>
+								<li>
+									<a href="#">University</a>
+										<ul class="univ">
+											<li><a href="{% url 'map_skku' %}">성균관대학교</a></li>
+											<li><a href="#"  onclick="alert('준비중입니다!');" >서울의과대학교</a></li>
+										    <li><a href="#"  onclick="alert('준비중입니다!');" >성신여자대학교</a></li>
+										    <li><a href="#"  onclick="alert('준비중입니다!');" >숙명여자대학교</a></li>
+										</ul>
+								</li>
+							</ul>
+						</nav>
+
+				</div>
+ 
+
+
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=2pqdgrl3l4"></script>
+
+</head>
+
+
+<body>
+
+    <div style="border-bottom : solid 2px gray ">  <br>  </div>
+
+    <div id="grid" >
+        <div id="map-here" style="border-right: solid 2px gray ">
+
+    <div>
+        
+        
+        
+        <div id="map" style="width:70%;height:700px ;  margin-left : 10% ;  margin-top : 1% ;"></div>
+
+            
+
+<script  >
+
+            // 여기다 지도 
+            var map = new naver.maps.Map( document.getElementById('map'), 
+                {       
+
+            // 학교 쪽으로 설정
+                        zoom: 12,
+                        center: new naver.maps.LatLng( 37.5873000 ,126.9932600),
+            // 줌 컨트롤
+                        zoomControl: true,
+                        zoomControlOptions: {
+                        style: naver.maps.ZoomControlStyle.SMALL,
+                        position: naver.maps.Position.TOP_RIGHT
+                        }
+                }  );
+        
+
+            var markerList = [];
+            
+            // 정보창.
+            // var infoWindows = [];
+
+
+
+            {% for y, x in matrix %}
+    
+            
+            var pos = new naver.maps.LatLng( {{y}}  , {{x}} )
+    
+            var marker = new naver.maps.Marker({
+                position: pos,
+                map : map
+                
+            })
+    
+        
+            markerList.push(marker)
+    
+            {% endfor %}
+    
+    
+    
+            // var menuLayer = $('<div style="position:absolute;z-index:10000;background-color:#fff;border:solid 1px #333;padding:10px;display:none;"></div>');
+        
+            // map.getPanes().floatPane.appendChild(menuLayer[0]);
+        
+            
+     
+            
+
+</script>        
+
+        
+        
+        
+        
+        
+    </div>
+
+            <br>
+            
+                {% if user.is_authenticated %}
+            <div align="right" >
+                <button type="button" class="btn btn-success"><a style="color:white; " href="#"  >편집</a></button>
+                <button type="button" class="btn btn-success"><a style="color:white; " href="{% url 'delete' each_cat.id %}" >삭제</a></button>
+            </div>
+                {% endif %}
+        
+        
+
+</div>
+
+        <div>
+            <div id="catlist" class="overflow-auto"  style="overflow-x:hidden;  overflow-y:auto;" >
+            <!-- 여기다 고양이 리스트 -->
+        
+
+            {% for c in all_cats.all %}
+
+            
+            {% if c.id == each_cat.id %}
+            <div id="scroll" style="  border-bottom: 4px darkslategray solid;"> </div>
+            {% endif %}
+            <div class="card" id="special_card" style="width: 390px ;" >
+                    <a href="{% url 'each_cat' c.id%}">
+                <img  src="{{c.catimage.url}}" style = "height: 150px; " class="card-img-top" alt="고양이 사진">
+                </a>  <div class="card-body">
+                    <h5 class="card-title">{{c.name}}</h5>
+                    {% if c.family == True %}
+                        <img src='{% static "has_family.png" %}' class = 'feature'>
+                    {% else %}
+                      <span></span>
+                    {% endif %}
+                    {% if c.food == True %}
+                        <img src='{% static "feedable.png"%}' class = 'feature'>
+                    {% else %}
+                        <span></span>
+                    {% endif %}                        
+                    {% if c.touch == True %}
+                        <img src='{% static "untouchable_cat.png"%}' class = 'feature'>
+                    {% else %}
+                        <span></span>
+                    {% endif%}
+                    {% if c.health == True %}
+                        <img src='{% static "unhealthy.png"%}' class = 'feature'>
+                    {% else %}
+                        <span></span>
+                    {% endif %}
+                    <p class="card-text">( {{c.age}} / {{c.gender}} )<br></p>
+                    
+                    <a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)"> 
+                        상세정보
+                    </a><div style="DISPLAY: none">
+                    
+                <p>{{c.info}}</p>
+                <div align="right">
+                <button  type="button" class="btn btn-primary"><a style="color:white; " href="javascript:popup()" target = "_blank" >Detail</a></button>
+                    
+                </div>    
+                    </div>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+            </div>
+            {% if c.id == each_cat.id %}
+            <div style="  border-top: 4px darkslategray solid;"> </div>
+            {% endif %}
+
+            <br>               
+            
+
+            {% endfor %}
+           
+            <script>       
+                    // $(document).ready(function fnMove(seq){
+                    // var offset = $("#div").offset();
+                    // $('#catlist').animate({scrollTop : offset.top}, 400);
+                    // });
+                // const parentElement = document.getElementById('scroll').parentElement;
+                // const parentAbsoluteTop = getAbsoluteTop(parentElement);
+                // const absoulteTop = getAbsoluteTop(document.getElementById('scroll'));
+                // const relativeTop = absoluteTop - parentAbsoluteTop;
+                $(document).ready(function Move(a){
+                    var scrollPosition = $("#scroll").offset().top;
+                    var parentPosition= $("#catlist").offset().top;
+                    var finalPosition= scrollPosition-parentPosition
+                    $("#catlist").animate({scrollTop: finalPosition}, 500);
+                })
+                
+
+            
+            </script> 
+            
+
+            <br>
+
+
+            
+        </div>
+
+        <script>
+                function popup(){
+                 var url = "{% url 'detail_cat'  each_cat.id %}"
+                 
+                var name = "popup  test"
+                var option = "width = 500, height = 500, top = 100, left = 200, location = no, scrollbars = yes"
+                window.open(url, name, option) ;
+                }
+                
+                </script>
+    <div align="right" style="margin-right: 30% ; padding-upper:10px; margin-bottom: 0px;">
+        
+        <button  type="button" class="btn btn-primary"><a style="color:white; " href="{% url 'map_skku' %}" >홈으로</a></button>
+    </div>
+        
+        </div>   
+    </div>
+
+</body>
+
+    
+    
+
+
+    <script src="{% static '/js/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/jquery.dropotron.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/jquery.scrolly.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/jquery.scrollex.min.js' %} " type="text/javascript"></script>
+    <script src="{% static '/js/browser.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/breakpoints.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/util.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/main.js' %}" type="text/javascript"></script>    
+   

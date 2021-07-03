@@ -1,0 +1,22 @@
+
+
+
+#grid{
+    display : grid;
+    grid-template-columns: 2.5fr 1.5fr;
+}
+
+.card{
+    display : grid;
+    grid-template-columns: 2fr 3fr;
+}
+
+#catlist{
+    height: 600px;
+    width: 400px;
+    margin : 100px 100px ;
+}
+
+#maphere{
+    margin : 100px;
+}

@@ -1,0 +1,43 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>결과</title>
+        <style>
+        a{
+            text-decoration: none;
+            padding:5px;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+        img{
+            display:block;
+            margin:0px auto;
+        }
+        </style>
+    </head>
+    <body>
+        {% if count == 2 %}
+        <img src="{% static 'verygood.PNG' %}" height='300px'>
+        {% elif count == 1 %}
+        <img src="{% static 'good.PNG' %}" height='300px'>
+        {% else %}
+        <img src="{% static 'bad.PNG' %}" height = '300px'>
+        {% endif %}
+        <h1>정답 개수: {{count}}</h1>
+        <details>
+            <summary>퀴즈 정답</summary>
+            <ol>
+                <li>눈썹</li>
+                <li>목란</li>
+            </ol>
+        </details>
+        <br>
+        <center>
+            <a href = "{% url 'home' %}">다시 풀기</a>
+        </center>
+    </body>
+</html>

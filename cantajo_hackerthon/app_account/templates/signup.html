@@ -1,0 +1,157 @@
+{% load staticfiles %}
+
+
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>길냥이 지도</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static '/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static '/css/noscript.css' %}" /></noscript>
+		<link href="https://fonts.googleapis.com/css?family=Crete+Round|Lobster|Noto+Sans+KR|Noto+Sans:400i|Song+Myung&display=swap" rel="stylesheet">
+        
+        <!-- CSS 연결용 -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- JavaScript 연결용 -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+		<style>
+
+			::-webkit-scrollbar{width: 10px;}
+			::-webkit-scrollbar-track {background-color: rgb(218, 218, 218);}
+			::-webkit-scrollbar-thumb {background-color:rgb(37, 37, 37); border-radius: 0px;}
+			::-webkit-scrollbar-thumb:hover {background: rgb(52, 52, 52);}
+
+			::-moz-selection {
+				background: rgb(37, 37, 37);
+				color: #fff;
+			}
+
+			::selection {
+				background: rgb(37, 37, 37);
+				color: #fff;
+			}
+
+			h1 {
+				font-family: 'Crete Round', serif;
+				text-shadow: 2px 2px 2px rgb(88, 88, 88);
+			}
+
+			h3.detail {
+				font-family: 'Noto Sans KR', sans-serif;
+				color: #fff;
+				text-shadow: 2px 2px 2px rgb(88, 88, 88);
+			}
+		
+			nav {
+				font-family: 'Noto Sans', sans-serif;
+				text-shadow: 2px 2px 2px rgb(88, 88, 88);
+			}
+
+			ul.univ {
+				font-family: 'Noto Sans KR', sans-serif;
+			}
+
+			div.wrapper_style1 {
+				font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+			}
+
+			body {
+				font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+			}
+
+			h3.name{
+				font-family: 'Song Myung', serif;
+			}
+			
+		    #box{
+                margin: 0 auto; padding: 10px 350px 10px 350px;  
+            }
+            
+            #button{
+                position: relative;
+                right: 30px; left: 140px;
+                
+            }
+            
+		</style>
+
+	</head>
+
+<body class="left-sidebar is-preload">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<div id="header">
+
+			<!-- Inner -->
+				<div class="inner">
+				    <header>
+				        <h1><a href="{% url 'signup' %}" id="logo">Sign Up</a></h1>
+			    	    <h3 class="detail"> <br> 길냥이 지도의 멤버가 되어보자 </h3>
+				    </header>
+				</div>
+
+				<!-- Nav -->
+				<nav id="nav">
+				<ul>
+					<li><a href="{% url 'home' %}">Home</a></li>
+					<li><a href="{% url 'about_1' %}">About</a></li>
+					<li><a href="{% url 'about_2' %}">Notice</a></li>
+					<li>
+                        <a href="#">University</a>
+				        <ul class="univ">
+					        <li><a href="{% url 'map_skku' %}">성균관대학교</a></li>
+					        <li><a href="#"  onclick="alert('준비중입니다!');" >서울의과대학교</a></li>
+					         <li><a href="#"  onclick="alert('준비중입니다!');" >성신여자대학교</a></li>
+					        <li><a href="#"  onclick="alert('준비중입니다!');" >숙명여자대학교</a></li>
+				        </ul>
+					</li>
+				</ul>
+				</nav>
+
+		</div>
+        <br>
+
+	<!-- Main -->
+    <br><br>
+    <div class="container" id="box">
+        <form method = "POST" action = "{% url 'signup' %}">
+            {% csrf_token %}
+            Username <br>
+            <input name = "username" type="text">
+            Password <br>
+            <input name="password1" type="password"><br>
+            Confirm Password <br>
+            <input name="password2" type="password"> <br>
+            <div id="button">
+            <input class="btn btn-primary" type="submit" value="Sign Up">
+            </div>
+        </form>
+            {{already}}
+    </div>
+            
+    <!-- sign up html -->
+            
+            
+            
+<script src="{% static '/js/jquery.min.js' %}" type="text/javascript"></script>
+<script src="{% static '/js/jquery.dropotron.min.js' %}" type="text/javascript"></script>
+<script src="{% static '/js/jquery.scrolly.min.js' %}" type="text/javascript"></script>
+<script src="{% static '/js/jquery.scrollex.min.js' %} " type="text/javascript"></script>
+<script src="{% static '/js/browser.min.js' %}" type="text/javascript"></script>
+<script src="{% static '/js/breakpoints.min.js' %}" type="text/javascript"></script>
+<script src="{% static '/js/util.js' %}" type="text/javascript"></script>
+<script src="{% static '/js/main.js' %}" type="text/javascript"></script>
+                                                
+
+</body>
+</html>

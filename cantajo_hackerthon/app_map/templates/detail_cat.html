@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>detail</title>
+  
+   
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+
+    <!-- Bootstrap core CSS -->
+<link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Crete+Round|Lobster|Noto+Sans+KR|Noto+Sans:400i|Song+Myung&display=swap" rel="stylesheet">
+
+
+    <style>
+        
+        ::-webkit-scrollbar{width: 10px;}
+		::-webkit-scrollbar-track {background-color: rgb(218, 218, 218);}
+		::-webkit-scrollbar-thumb {background-color:rgb(37, 37, 37); border-radius: 0px;}
+		::-webkit-scrollbar-thumb:hover {background: rgb(52, 52, 52);}
+
+		::-moz-selection {
+			background: rgb(37, 37, 37);
+			color: #fff;
+		}
+        
+        ::selection {
+			background: rgb(37, 37, 37);
+			color: #fff;
+		}
+        
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }         
+      }
+        
+        #cat_image{
+            border-radius: 10px;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+            margin: 0 auto;
+            background-color: #e8e9e9;
+        }
+        
+        div.form-group {
+            margin-top : 40px;
+            margin-left : 100px;
+            margin-right : 100px;
+            margin-bottom : 40px;
+            
+            padding-top : 20px;
+            padding-left : 20px;
+            padding-right : 20px;
+            padding-bottom : 20px;
+            
+            background-color: #d5d5d5;
+        }
+        
+        div.gallery {
+            margin-top : 20px;
+            margin-left : 100px;
+            margin-right : 100px;
+            margin-buttom : 40px;
+            
+            padding-top : 20px;
+            padding-left : 20px;
+            padding-right : 20px;
+            madding-buttom : 20px;
+            
+            background-color: #d5d5d5;
+        }
+        
+
+    </style>
+      
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.3/examples/album/album.css" rel="stylesheet">      
+    
+    </head>
+    
+  <body>
+      
+    <h1> {{c.nickname}} </h1>
+
+    <div class="form-group" style="border : black 2px solid ;">
+    
+    
+        <form  enctype="multipart/form-data" method="POST" >
+        {% csrf_token %}
+        
+        <!-- <label for="exampleFormControlFile1">사진 추가 </label> -->
+        
+        <center><h3> - Add Photo - </h3></center>
+        
+        <div><center>
+            <input name="photo" type="file" class="form-control-file" style= "border : black 1px solid" >
+        </center></div>
+            
+        <br> 
+        
+        <div>
+        <center> <h5> 간략한 설명을 해주세요! </center> </h5> 
+        <div> <center>
+            <input name="description" type = "text" maxlength="100" autofocus >  
+        <!-- <input type="submit" value="추가">  -->
+        &nbsp
+        <button type="submit" class="btn btn-primary"><a style="color:white; " > 추가 </a></button>
+        </center> </div>
+         
+        
+        </div>
+        
+        </form>
+
+    </div>
+          
+    <main role="main">
+
+    <div class="gallery" style= "border : black 2px solid" >
+    <div class="container">
+
+<!--         
+         <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+         -->
+        
+        <div class="row">
+
+                {% for photo in photos.all %}
+                {% if photo.catnum == c.id %}
+         
+            <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                
+                    <img src= "{{photo.photo.url}}" id="cat_image" alt="고양이 사진" width="100%" height="auto">
+                <div class="card-body">
+                <p class="card-text">{{ photo.title }} </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"><center><a href="{%url 'delete2' photo.id%}">Delete</a></center></button>
+                </div>
+                </div>
+            </div>
+            </div>
+            
+            {% endif %}
+            {% endfor %}
+            
+            
+      </div>
+    </div>
+  </div>
+
+</main>
+
+    
+    
+</div>   
+      
+       
+      <br><br>
+ <div  align="right" >
+      <center> <button  type="button" class="btn btn-primary"><a style="color:white; " onclick=" self.close()" > 닫기 </a></button> </center>
+ </div>    
+
+      <br>
+  
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="https://getbootstrap.com/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script></body>
+    
+      
+
+      
+      
+      

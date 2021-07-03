@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>홈</title>
+    </head>
+    <body>
+        <h1>퀴즈</h1><br>
+        <form action="{% url 'result'%}">
+            <h3>의학적으로 얼굴과 머리를 구분하는 기준은 어디일까요?</h3>
+            <input type='radio' name='quiz1' value = '코'>코
+            <input type='radio' name='quiz1' value = '눈썹'>눈썹
+            <input type='radio' name='quiz1' value = '귀'>귀
+            <input type='radio' name='quiz1' value = '머리카락'>머리카락
+            <br><br>
+            <h3>우리나라의 국화는 무궁화입니다. 북한의 국화는 무엇일까요?</h3>
+            <input type='radio' name='quiz2' value = '목란'>목란
+            <input type='radio' name='quiz2' value = '진달래'>진달래
+            <input type='radio' name='quiz2' value = '국화'>국화
+            <input type='radio' name='quiz2' value = '개나리'>개나리
+            <br><br>
+            <input type='submit' value='제출'>
+        </form>
+
+    </body>
+</html>
