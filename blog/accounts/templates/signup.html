@@ -1,0 +1,68 @@
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Akronim" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
+    <style>
+    body{
+        background-color:black;
+    }
+    h1{
+        text-align:center;
+        font-family: 'Akronim', cursive;
+        font-size: 5em;
+        color:red;
+    }
+    button{
+        background-color:red;
+        border:0px;
+        display:block;
+        margin:auto;
+        width:10em;
+        height:4em;
+        border-radius:10%;
+        font-family: 'Sofia', cursive;
+        font-size: 1em;
+    }
+    .t{
+        font-family: 'Sofia', cursive;
+        color: white;
+        font-size:2em;
+        position:relative;
+        left:2em;
+    }
+    input{
+        border:none;
+        background-color:white;
+        color:black;
+        display:block;
+        font-size:2em;
+        height:2em;
+        width:20em;
+        font-family: 'Sofia', cursive;
+        border-radius:10%;
+        position:relative;
+        left:5em;
+
+    }
+    </style>
+</head>
+
+<body>
+<h1>Sign Up!</h1>
+<form method = 'POST' action='{%url "signup" %}'>
+    {% csrf_token %}
+    <div class='t'>Username:</div>
+    <br>
+    <input name='username' type='text' value=''>
+    <br>
+    <div class='t'>Password:</div>
+    <br>
+    <input name='password1' type='password' value=''>
+    <br>
+    <div class='t'>Confirm Password:</div>
+    <br>
+    <input name='password2' type='password' value=''>
+    <br>
+    <br>
+    <button>Sign Up</button>
+</form>
+</body>

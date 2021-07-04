@@ -1,0 +1,1 @@
+web: gunicorn forthproject.wsgi --log-file-

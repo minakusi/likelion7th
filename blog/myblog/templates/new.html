@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block contents%}
+<head>
+  <title>new</title>
+  <link href="https://fonts.googleapis.com/css?family=Akronim" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">  
+  <style>
+    body{
+      background-color: black;
+    }
+    h1{
+        text-align:center;
+        font-family: 'Akronim', cursive;
+        font-size: 5em;
+        color:red;
+    }
+    button{
+        background-color:red;
+        border:0px;
+        display:block;
+        margin:auto;
+        width:10em;
+        height:4em;
+        border-radius:10%;
+        font-family: 'Sofia', cursive;
+        font-size: 1em;
+    }
+    h4{
+        font-family: 'Sofia', cursive;
+        color: white;
+        font-size:2em;
+        position:relative;
+        left:2em;
+    }
+    input, textarea{
+        border:none;
+        background-color:white;
+        color:black;
+        display:block;
+        font-size:2em;
+        height:2em;
+        width:20em;
+        font-family: 'Sofia', cursive;
+        border-radius:10%;
+        position:relative;
+        left:5em;
+
+    }
+    textarea{
+      height:10em !important;
+      width: 20em !important;
+    }
+    
+    tr{
+      vertical-align:top;
+      color:white;
+      font-family: 'Sofia', cursive;
+      border: 70px solid black;      
+    }
+    
+    th{
+      font-size:2.5em;
+      text-align:right;
+    }
+  </style>
+
+</head>
+<body>
+    <br>
+<h1> This is my STORY </h1>    
+<div class = 'container'>
+  <form method='POST'>
+  {% csrf_token %}
+  <table>
+    {{form.as_table}}
+  </table>
+  <br>
+    <button>SUBMIT</button>
+  </form>
+</div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block contents %} 
+<head>
+  <title>home</title>
+    <link href="https://fonts.googleapis.com/css?family=Akronim" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
+    <style>
+      img{
+        margin:auto;
+        display: block;
+      }
+      body{
+        background-color: black;
+      }
+      div{
+        font-family:'Sofia', 'cursive';
+      }
+      span{
+        color:white;
+      }
+    </style>
+</head>
+<body>
+  <br>
+  <img src='{% static "thanos.jpg" %}' height=200 alt='thanos'>
+  <br>
+
+    {% for i in posts %}
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{i.title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{i.pub_date}}</h6>
+            <p class="card-text">{{i.summary}}</p>
+            <a href="{% url 'detail' i.id %}" class="card-link">...more</a>
+          </div>
+        </div>
+    {% endfor %}
+  <div class='container'>
+  {% if posts.has_previous%}
+  <a href='?page=1'>First</a>
+  <a href='?page={{posts.previous_page_number}}'>Previous></a>
+  {%endif%}
+  <span>{{posts.number}}</span>
+  <span>of</span>
+  <span>{{posts.paginator.num_pages}}</span>
+  {% if posts.has_next%}
+  <a href='?page={{posts.next_page_number}}'>Next</a>
+  <a href='?page={{posts.paginator.num_pages}}'>Last</a>
+  {% endif %}
+  </div>
+</body>
+</html>
+{% endblock %}
